@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config";
 
 export default function Card({ label, emoji, amount, isExpanded, onClick, onUpdated }) {
   const [inputValue, setInputValue] = useState("");
@@ -14,7 +15,7 @@ export default function Card({ label, emoji, amount, isExpanded, onClick, onUpda
     if (!inputValue.trim() || Number(inputValue) === 0) return;
 
     axios
-      .post("http://127.0.0.1:8000/pay", {
+      .post(`${API_BASE_URL}/pay`, {
         category: label,
         amount: Number(inputValue),
       })

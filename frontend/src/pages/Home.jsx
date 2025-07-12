@@ -1,6 +1,7 @@
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config";
 
 const CATEGORIES = [
   { id: 1, label: "Продукты", emoji: "🥗" },
@@ -14,7 +15,7 @@ export default function Home() {
 
   const fetchData = () => {
     axios
-      .get("http://localhost:8000/state")
+      .get(`${API_BASE_URL}/state`)
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));
   };

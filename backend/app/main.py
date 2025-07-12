@@ -7,7 +7,7 @@ import os
 
 app = FastAPI()
 
-DATA_FILE = "backend/data.json"
+DATA_FILE = "data.json"
 
 # Разрешаем фронту обращаться
 app.add_middleware(

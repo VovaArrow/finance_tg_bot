@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config";
 
 export default function Cancel() {
   const [amount, setAmount] = useState("");
@@ -8,7 +9,7 @@ export default function Cancel() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:8000/cancel", {
+      .post(`${API_BASE_URL}/cancel`, {
         category,
         amount: Number(amount)
       })
