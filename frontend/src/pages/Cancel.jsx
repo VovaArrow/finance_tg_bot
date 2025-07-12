@@ -1,14 +1,24 @@
 import { useState } from "react";
+import axios from "axios";
 
-export default function AddExpense() {
+export default function Cancel() {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Добавлено: ${amount} ₽ — ${category}`);
-    setAmount("");
-    setCategory("");
+    axios
+      .post("http://127.0.0.1:8000/cancel", {
+        category,
+        amount: Number(amount)
+      })
+      .then((res) => {
+        console.log("Успешно:", res.data);
+        setAmount("");
+        setCategory("");
+      })
+      .catch((err) => {
+        console.error("Ошибка:", err);
+      });
   };
 
   return (

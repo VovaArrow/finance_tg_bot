@@ -10,8 +10,8 @@ export default function Navigation({ page, setPage, hidden }) {
         Главная
       </button>
        <button
-        onClick={() => setPage("add")}
-        className={`text-m font-bold ${page === "add" ? "text-sky-500" : ""}`}
+        onClick={() => setPage("cancel")}
+        className={`text-m font-bold ${page === "cancel" ? "text-sky-500" : ""}`}
       >
         Отменить расход
       </button>
