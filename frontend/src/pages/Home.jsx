@@ -48,6 +48,7 @@ export default function Home() {
                 amount={amount}
                 isExpanded={isExpanded}
                 onClick={() => toggleCard(item.id)}
+                onUpdated={fetchData}
               />
             </div>
           );

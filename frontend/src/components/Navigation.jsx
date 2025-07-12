@@ -9,7 +9,7 @@ export default function Navigation({ page, setPage, hidden }) {
       >
         Главная
       </button>
-       <button
+      <button
         onClick={() => setPage("cancel")}
         className={`text-m font-bold ${page === "cancel" ? "text-sky-500" : ""}`}
       >
@@ -21,7 +21,7 @@ export default function Navigation({ page, setPage, hidden }) {
       >
         ИИ Чат
       </button>
-     
+
     </div>
   );
 }

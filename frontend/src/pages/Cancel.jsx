@@ -6,17 +6,20 @@ export default function Cancel() {
   const [category, setCategory] = useState("");
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post("http://127.0.0.1:8000/cancel", {
         category,
         amount: Number(amount)
       })
       .then((res) => {
+        alert("Расход успешно отменён!");
         console.log("Успешно:", res.data);
         setAmount("");
         setCategory("");
       })
       .catch((err) => {
+        alert("Ошибка при отмене расхода!");
         console.error("Ошибка:", err);
       });
   };
