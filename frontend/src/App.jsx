@@ -12,7 +12,9 @@ export default function App() {
       {page === "home" && <Home />}
       {page === "add" && <AddExpense />}
 
-      <Navigation page={page} setPage={setPage} hidden={keyboardOpen} />
+      <div className="fixed bottom-0 left-0 right-0 w-full max-w-md mx-auto">
+        <Navigation page={page} setPage={setPage} hidden={keyboardOpen} />
+      </div>
     </div>
   );
 }

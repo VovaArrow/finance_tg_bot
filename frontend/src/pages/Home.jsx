@@ -1,18 +1,33 @@
 import Card from "../components/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const items = [
-  { id: 1, label: "Продукты", emoji: "🥗", amount: 42000 },
-  { id: 2, label: "Настя", emoji: "💝", amount: 15000 },
-  { id: 3, label: "Резерв", emoji: "💰", amount: 18000 },
+const CATEGORIES = [
+  { id: 1, label: "Продукты", emoji: "🥗" },
+  { id: 2, label: "Настя", emoji: "💝" },
+  { id: 3, label: "Резерв", emoji: "💰" },
 ];
 
 export default function Home() {
+  const [data, setData] = useState(null);
   const [expandedCardId, setExpandedCardId] = useState(null);
+
+  const fetchData = () => {
+    axios
+      .get("http://localhost:8000/state")
+      .then((res) => setData(res.data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const toggleCard = (id) => {
     setExpandedCardId((prev) => (prev === id ? null : id));
   };
+
+  if (!data) return <div>Загрузка...</div>;
 
   return (
     <div className="pb-24 px-4">
@@ -21,17 +36,16 @@ export default function Home() {
       </h1>
 
       <div className="grid grid-cols-1 gap-4">
-        {items.map((item) => {
+        {CATEGORIES.map((item) => {
           const isExpanded = item.id === expandedCardId;
+          const amount = data[item.label] ?? 0;
 
           return (
-            <div
-              key={item.id}
-            >
+            <div key={item.id}>
               <Card
                 label={item.label}
                 emoji={item.emoji}
-                amount={item.amount}
+                amount={amount}
                 isExpanded={isExpanded}
                 onClick={() => toggleCard(item.id)}
               />
