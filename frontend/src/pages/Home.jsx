@@ -28,7 +28,9 @@ export default function Home() {
     setExpandedCardId((prev) => (prev === id ? null : id));
   };
 
-  if (!data) return <div>Загрузка...</div>;
+  if (!data) return (<div className="flex items-center justify-center min-h-screen">
+    <div className="w-10 h-10 border-4 border-t-sky-500 border-white rounded-full animate-spin"></div>
+  </div>);
 
   return (
     <div className="pb-24 px-4">

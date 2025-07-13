@@ -34,14 +34,14 @@ export default function Card({ label, emoji, amount, isExpanded, onClick, onUpda
   return (
     <div
       className={`
-        p-4 dark:bg-gray-700 rounded-xl shadow 
+        p-4 bg-gray-700 rounded-xl shadow 
         flex flex-col items-center justify-center
         transition-all duration-300 ease-in-out cursor-pointer
       `}
       onClick={onClick}
     >
       <div className="text-2xl font-bold">{amount} ₽</div>
-      <div className="text-base font-bold text-gray-200 mt-1">
+      <div className="text-base font-bold mt-1">
         {emoji} {label} {emoji}
       </div>
 
@@ -53,7 +53,7 @@ export default function Card({ label, emoji, amount, isExpanded, onClick, onUpda
           ${isExpanded ? "max-h-96 mt-4" : "max-h-0"}
         `}
       >
-        <div className="text-sm text-white text-center px-2">
+        <div className="text-sm text-center px-2">
           <div className="p-2">Внести расход</div>
 
           <input
@@ -67,7 +67,7 @@ export default function Card({ label, emoji, amount, isExpanded, onClick, onUpda
 
           <button
             type="button"
-            className="w-full p-2 bg-blue-600 text-white rounded-xl"
+            className="w-full p-2 bg-blue-600 rounded-xl"
             onClick={handleSubmit}
           >
             Внести
